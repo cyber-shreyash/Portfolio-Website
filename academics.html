@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My website</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Indria+Sans&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Indria Sans', sans-serif;
+        }
+
+        body {
+            background-color: #171717;
+        }
+
+        .mainbox {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        #leftbox {
+            width: 30vw;
+            background-color: #030303;
+            display: flex;
+            justify-content: center;
+        }
+
+        #rightbox {
+            width: 70vw;
+            background-color: #171717;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: aliceblue;
+        }
+
+        .headbutton {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            height: 100vh;
+            align-items: center;
+        }
+
+        .nav-item {
+            font-size: 45px;
+            color: white;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .nav-item::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 3px;
+            background-color: #66FF00;
+            transition: width 0.3s ease;
+        }
+
+        .nav-item:hover {
+            color: #66FF00;
+        }
+
+        .nav-item:hover::after {
+            width: 100%;
+        }
+
+        #intro1 {
+            margin-top: 5%;
+            margin-bottom: 3%;
+            font-size: 65px;
+            color: #66FF00;
+            position: relative;
+        }
+
+        #intro2 {
+            font-size: 26px;
+            width: 70%;
+            text-align: center;
+            margin: 20px 0 10px;
+        }
+html {
+  scroll-behavior: smooth;
+}
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(280px, 1fr));
+            gap: 30px 60px;
+        }
+
+        .box {
+            color: white;
+            background-color: #1f1e1e;
+            border-radius: 10px;
+            padding: 28px 20px;
+            min-height: 100px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .box:hover {
+            transform: translateY(-6px);
+            background: #242323;
+            box-shadow:
+                0 14px 35px rgba(0, 0, 0, 0.85),
+                0 0 18px #66FF00;
+        }
+
+        .skills-wrapper {
+            overflow: hidden;
+            width: 100%;
+            padding: 30px 0;
+        }
+
+        .skills-track {
+            display: flex;
+            gap: 80px;
+            width: max-content;
+            animation: scroll-left 50s linear infinite;
+        }
+
+        .skills-track img {
+            height: 100px;
+            filter: grayscale(50%);
+            opacity: 0.7;
+            transition: transform 0.3s ease;
+        }
+
+        .skills-track img:hover {
+            transform: scale(1.15);
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        body {
+            opacity: 0;
+            transform: translateY(10px);
+            overflow: hidden;
+            animation: smoothLoad 0.8s ease-out forwards;
+        }
+
+        @keyframes smoothLoad {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scroll-left {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .copyright {
+            margin: 120px 0 20px;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: #030303;
+            padding: 15px 20px;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            color: #66FF00;
+            font-size: 22px;
+        }
+
+        .hamburger {
+            font-size: 30px;
+            color: white;
+            cursor: pointer;
+        }
+
+        #intro1 {
+            margin-top: 4%;
+            margin-bottom: 3%;
+            font-size: 65px;
+            color: #66FF00;
+            position: relative;
+        }
+
+        #intro1::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 3px;
+            background-color: #66FF00;
+            transition: width 0.3s ease;
+        }
+
+        #intro1:hover {
+            color: #66FF00;
+        }
+
+        #intro1:hover::after {
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+
+            .mobile-nav {
+                display: flex;
+            }
+            body{
+                overflow: visible;
+            }
+            .mainbox {
+                flex-direction: column;
+                padding-top: 60px;
+                height: 100dvh;
+            }
+
+            #leftbox {
+                display: none;
+                width: 100%;
+            }
+
+            #leftbox.active {
+                display: block;
+            }
+
+            .headbutton {
+                height: auto;
+                padding: 20px 0;
+                gap: 20px;
+            }
+
+            .nav-item {
+                font-size: 26px;
+            }
+
+            #rightbox {
+                width: 100%;
+                padding: 20px 15px;
+            }
+
+            #intro1 {
+                font-size: 32px;
+                text-align: center;
+            }
+
+            #intro2 {
+                font-size: 18px;
+                width: 100%;
+            }
+
+            #grid {
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+                gap: 20px;
+            }
+
+            .box {
+                font-size: 16px;
+                padding: 20px;
+            }
+
+            .skills-track {
+                gap: 40px;
+                animation-duration: 40s;
+            }
+
+            .skills-track img {
+                height: 65px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            #intro1 {
+                font-size: 26px;
+            }
+
+            .nav-item {
+                font-size: 22px;
+            }
+
+            .box {
+                font-size: 15px;
+            }
+
+            .skills-track img {
+                height: 55px;
+            }
+
+            .copyright {
+                margin-top: 30%;
+                margin-bottom: 20px;
+                text-align: center;
+                font-size: 14px;
+                color: #888;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="mobile-nav">
+        <div class="logo">ACADEMICS</div>
+        <div class="hamburger" id="hamburger">☰</div>
+    </div>
+
+    <div class="mainbox">
+
+        <div id="leftbox">
+            <div class="headbutton">
+                <a class="nav-item" href="index.html">HOME</a>
+                <a class="nav-item" href="aboutme.html">ABOUT ME</a>
+                <a class="nav-item" href="academics.html">ACADEMICS</a>
+                <a class="nav-item" href="contact.html">CONTACT</a>
+            </div>
+        </div>
+
+        <div id="rightbox">
+
+            <p id="intro1">Focus Areas</p>
+
+            <div id="intro2">
+                <div id="grid">
+                    <div class="box">Web Development</div>
+                    <div class="box">DSA</div>
+                    <div class="box">Software Engineering</div>
+                    <div class="box">GenAI</div>
+                    <div class="box">Machine Learning</div>
+                    <div class="box">Competitive Programming</div>
+                </div>
+            </div>
+
+            <p id="intro1">Technical Skills</p>
+
+            <div class="skills-wrapper">
+                <div class="skills-track">
+                    <img src="html2.svg">
+                    <img src="css.svg">
+                    <img src="javascript.svg">
+                    <img src="cpp.svg">
+                    <img src="c.svg">
+                    <img src="git.svg">
+
+                    <img src="html2.svg">
+                    <img src="css.svg">
+                    <img src="javascript.svg">
+                    <img src="cpp.svg">
+                    <img src="c.svg">
+                    <img src="git.svg">
+                </div>
+            </div>
+            <footer class="copyright">
+                © 2025 Shreyash . Built with passion !
+            </footer>
+        </div>
+    </div>
+
+
+    <script src="first.js">
+
+    </script>
+
+</body>
+
+</html>
